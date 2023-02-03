@@ -1,10 +1,9 @@
 class ParseFileJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(file)
     upload = ::Upload.new()
     upload.save
-    file = File.open("app/assets/demo-models-pack/model-2.inp")
     blocks = file.read.split("..")
     blocks.each do |b|
       type = ""
