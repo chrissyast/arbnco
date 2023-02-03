@@ -1,7 +1,4 @@
 <h1>Here's your file</h1>
-<%= @upload.class.reflect_on_all_associations.each do |r| %>
-  <h3>
-    <%= r.name.capitalize %>
-  </h3>
+<% @upload.class.reflect_on_all_associations.each do |r| %>
   <%= render partial: "association", locals: { association: @upload.public_send(r.name) } %>
 <% end %>
