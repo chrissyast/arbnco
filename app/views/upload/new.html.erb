@@ -1,2 +1,4 @@
-<h1>Upload#new</h1>
-<p>Find me in app/views/upload/new.html.erb</p>
+<%= form_tag({:action => :create}, :multipart => true) do %>
+  <%= file_field_tag 'file' %>
+  <%= submit_tag("Submit") %>
+<% end %>
