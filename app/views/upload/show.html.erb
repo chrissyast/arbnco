@@ -1,5 +1,5 @@
 <%if @upload.completed? %>
-  <h1>Here's your file</h1>
+  <%= render "inp_file"%>
 <%else%>
-  <h1>Waiting...</h1>
+  <h1>We're still working on your file, please check back shortly</h1>
 <%end%>
