@@ -1,14 +1,12 @@
 class ParseFileJob < ApplicationJob
   queue_as :default
 
-  def perform(file)
-    upload = ::Upload.new()
-    upload.save
+  def perform(file, upload_id)
     blocks = file.read.split("..")
     blocks.each do |b|
       type = ""
       args = {}
-      args[:upload_id] = upload.id
+      args[:upload_id] = upload_id
       lines = b.split("\n").select {|l| l[0] != "$" and l.include? "="}
       lines.each_with_index do |l, i|
         pair = l.split("=").map do |l|
@@ -31,6 +29,6 @@ class ParseFileJob < ApplicationJob
         object_record.save
       end
     end
-    return "done"
+    Upload.find(upload_id).update(:completed => true)
   end
 end
