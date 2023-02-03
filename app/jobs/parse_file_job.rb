@@ -1,8 +1,9 @@
 class ParseFileJob < ApplicationJob
   queue_as :default
+  self.log_arguments = false
 
   def perform(file, upload_id)
-    blocks = file.read.split("..")
+    blocks = file.split("..")
     blocks.each do |b|
       type = ""
       args = {}
