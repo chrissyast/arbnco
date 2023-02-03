@@ -1,0 +1,2 @@
+class RecProject < ApplicationRecord
+end

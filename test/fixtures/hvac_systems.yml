@@ -1,0 +1,51 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  heat_source: MyString
+  chp: MyString
+  fuel_type: MyString
+  heat_rec_system: MyString
+  aux_energy_corr: MyString
+  heat_sseff: MyString
+  heat_gen_seff: MyString
+  eff_default_heat: MyString
+  heat_rec_var_eff: MyString
+  cool_gen_seer: MyString
+  cool_gen_eer: MyString
+  metering: MyString
+  cool_sseer: MyString
+  sfp_check: MyString
+  variable_speed_pump: MyString
+  duct_leakage_pc: MyString
+  cen_time_ctrl: MyString
+  optimum_start: MyString
+  room_time_ctrl: MyString
+  room_temp_ctrl: MyString
+  weather_comp: MyString
+  upload: one
+
+two:
+  type: 
+  heat_source: MyString
+  chp: MyString
+  fuel_type: MyString
+  heat_rec_system: MyString
+  aux_energy_corr: MyString
+  heat_sseff: MyString
+  heat_gen_seff: MyString
+  eff_default_heat: MyString
+  heat_rec_var_eff: MyString
+  cool_gen_seer: MyString
+  cool_gen_eer: MyString
+  metering: MyString
+  cool_sseer: MyString
+  sfp_check: MyString
+  variable_speed_pump: MyString
+  duct_leakage_pc: MyString
+  cen_time_ctrl: MyString
+  optimum_start: MyString
+  room_time_ctrl: MyString
+  room_temp_ctrl: MyString
+  weather_comp: MyString
+  upload: two

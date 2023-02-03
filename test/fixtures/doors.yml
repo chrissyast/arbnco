@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  area: MyString
+  construction: MyString
+  type: 
+  upload: one
+
+two:
+  area: MyString
+  construction: MyString
+  type: 
+  upload: two

@@ -1,0 +1,31 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  u_value: MyString
+  cm: MyString
+  metal_cladding: MyString
+  u_value_corr: MyString
+  the: MyString
+  type: 
+  is: MyString
+  Glass: MyString
+  u_value: MyString
+  tot_sol_trans: MyString
+  lig_sol_trans: MyString
+  : one
+  upload: MyString
+
+two:
+  u_value: MyString
+  cm: MyString
+  metal_cladding: MyString
+  u_value_corr: MyString
+  the: MyString
+  type: 
+  is: MyString
+  Glass: MyString
+  u_value: MyString
+  tot_sol_trans: MyString
+  lig_sol_trans: MyString
+  : two
+  upload: MyString

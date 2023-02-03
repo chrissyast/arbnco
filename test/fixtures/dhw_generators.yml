@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  heat_gen_type: MyString
+  fuel_type: MyString
+  dhw_gen_seff: MyString
+  heat_gen_post98: MyString
+  store_system: MyString
+  store_vol: MyString
+  store_insulat_type: MyString
+  store_insulat_thick: MyString
+  sec_circulation: MyString
+  upload: one
+
+two:
+  heat_gen_type: MyString
+  fuel_type: MyString
+  dhw_gen_seff: MyString
+  heat_gen_post98: MyString
+  store_system: MyString
+  store_vol: MyString
+  store_insulat_type: MyString
+  store_insulat_thick: MyString
+  sec_circulation: MyString
+  upload: two
