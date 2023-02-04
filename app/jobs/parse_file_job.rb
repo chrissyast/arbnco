@@ -30,6 +30,8 @@ class ParseFileJob < ApplicationJob
         object_record.save
       end
     end
-    Upload.find(upload_id).update(:completed => true)
+    upload = Upload.find(upload_id)
+    upload.update(:completed => true)
+    UploadMailer.with(id: upload_id, to: upload.email_address).complete.deliver
   end
 end
