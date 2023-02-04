@@ -1,4 +1,7 @@
 <%= form_tag({:action => :create, :method => :post}, :multipart => true) do %>
-  <%= file_field_tag 'file' %>
+  <%= file_field_tag 'files[]', accept:"inp", multiple: true %>
+  <%= email_field :upload, :email_address, placeholder: "Enter your email" %>
   <%= submit_tag("Submit") %>
 <% end %>
+
+Note: you can upload multiple files from the dialog, but if you click "choose files" again your previous choices will be lost.
