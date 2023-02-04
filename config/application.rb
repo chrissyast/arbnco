@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 
 ENV.update YAML.load_file('config/application.yml')[Rails.env] rescue {}
 
-module Capgemini
+module Arbnco
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
