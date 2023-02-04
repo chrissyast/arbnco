@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'upload#new'
   post 'upload/create'
   get 'upload/new'
   get 'upload/:id', to: 'upload#show'

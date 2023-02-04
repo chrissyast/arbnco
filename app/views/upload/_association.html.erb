@@ -1,7 +1,7 @@
 <details>
   <% if association.is_a? ActiveRecord::Associations::CollectionProxy %>
     <summary>
-      <%= association.name.capitalize %> ( <%= association.size  %> )
+      <%= label.capitalize %> ( <%= association.size  %> )
     </summary>
     <ul>
       <% association.each do |a| %>
@@ -10,7 +10,7 @@
     </ul>
   <% else %>
     <summary>
-      <%= association.name.capitalize %> (1)
+      <%= label.capitalize %> (1)
     </summary>
     <ul>
       <%= render partial: "object", locals: { object: association } %>
