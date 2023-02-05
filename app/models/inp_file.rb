@@ -1,4 +1,4 @@
-class Upload < ApplicationRecord
+class InpFile < ApplicationRecord
   has_one :general
   has_many :compliances
   has_many :constructions

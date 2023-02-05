@@ -1,3 +1,3 @@
 class RecUser < ApplicationRecord
-  belongs_to :upload
+  belongs_to :inp_file
 end

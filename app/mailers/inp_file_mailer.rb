@@ -1,4 +1,4 @@
-class UploadMailer < ApplicationMailer
+class InpFileMailer < ApplicationMailer
   def complete
     @id = params[:id]
     mail(to: params[:to], subject: "We've processed your file!")

@@ -2,12 +2,12 @@ class ParseFileJob < ApplicationJob
   queue_as :default
   self.log_arguments = false
 
-  def perform(file, upload_id)
+  def perform(file, inp_file_id)
     blocks = file.split("..")
     blocks.each do |b|
       type = ""
       args = {}
-      args[:upload_id] = upload_id
+      args[:inp_file_id] = inp_file_id
       lines = b.split("\n").select {|l| l[0] != "$" and l.include? "="}
       lines.each_with_index do |l, i|
         pair = l.split("=").map do |l|
@@ -30,8 +30,8 @@ class ParseFileJob < ApplicationJob
         object_record.save
       end
     end
-    upload = Upload.find(upload_id)
+    upload = InpFile.find(inp_file_id)
     upload.update(:completed => true)
-    UploadMailer.with(id: upload_id, to: upload.email_address).complete.deliver
+    InpFileMailer.with(id: inp_file_id, to: upload.email_address).complete.deliver
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_04_140115) do
+ActiveRecord::Schema.define(version: 2023_02_05_120844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,10 +29,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "air_con_kw_exact"
     t.string "air_con_inspection"
     t.string "alt_sys_consider"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_compliances_on_upload_id"
+    t.index ["inp_file_id"], name: "index_compliances_on_inp_file_id"
   end
 
   create_table "constructions", force: :cascade do |t|
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "glass"
     t.string "tot_sol_trans"
     t.string "lig_sol_trans"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_constructions_on_upload_id"
+    t.index ["inp_file_id"], name: "index_constructions_on_inp_file_id"
   end
 
   create_table "dhw_generators", force: :cascade do |t|
@@ -68,10 +68,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "hvac_system_eff"
     t.string "chp"
     t.string "isbem_id"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_dhw_generators_on_upload_id"
+    t.index ["inp_file_id"], name: "index_dhw_generators_on_inp_file_id"
   end
 
   create_table "doors", force: :cascade do |t|
@@ -79,10 +79,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "area"
     t.string "construction"
     t.string "x_type"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_doors_on_upload_id"
+    t.index ["inp_file_id"], name: "index_doors_on_inp_file_id"
   end
 
   create_table "generals", force: :cascade do |t|
@@ -142,21 +142,21 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "transaction_type"
     t.string "soft_comp_name"
     t.string "max_storey"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_generals_on_upload_id"
+    t.index ["inp_file_id"], name: "index_generals_on_inp_file_id"
   end
 
   create_table "glasses", force: :cascade do |t|
     t.string "u_value"
     t.string "tot_sol_trans"
     t.string "lig_sol_trans"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_glasses_on_upload_id"
+    t.index ["inp_file_id"], name: "index_glasses_on_inp_file_id"
   end
 
   create_table "hvac_systems", force: :cascade do |t|
@@ -191,18 +191,25 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "isbem_id"
     t.string "heat_rec_seff"
     t.string "eff_default_cool"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_hvac_systems_on_upload_id"
+    t.index ["inp_file_id"], name: "index_hvac_systems_on_inp_file_id"
+  end
+
+  create_table "inp_files", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "completed", default: false
+    t.string "email_address"
   end
 
   create_table "rec_projects", force: :cascade do |t|
     t.string "name"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_rec_projects_on_upload_id"
+    t.index ["inp_file_id"], name: "index_rec_projects_on_inp_file_id"
   end
 
   create_table "rec_users", force: :cascade do |t|
@@ -210,17 +217,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "code"
     t.string "user_in_out"
     t.string "rec_comment"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_rec_users_on_upload_id"
-  end
-
-  create_table "uploads", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "completed", default: false
-    t.string "email_address"
+    t.index ["inp_file_id"], name: "index_rec_users_on_inp_file_id"
   end
 
   create_table "walls", force: :cascade do |t|
@@ -233,10 +233,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "orientation"
     t.string "construction"
     t.string "multiplier"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_walls_on_upload_id"
+    t.index ["inp_file_id"], name: "index_walls_on_inp_file_id"
   end
 
   create_table "windows", force: :cascade do |t|
@@ -254,10 +254,10 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "disp_wind"
     t.string "multiplier"
     t.string "roof_light_cover"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_windows_on_upload_id"
+    t.index ["inp_file_id"], name: "index_windows_on_inp_file_id"
   end
 
   create_table "zones", force: :cascade do |t|
@@ -319,22 +319,22 @@ ActiveRecord::Schema.define(version: 2023_02_04_140115) do
     t.string "multiplier"
     t.string "heat_rec_seff"
     t.string "sfp_tu"
-    t.bigint "upload_id", null: false
+    t.bigint "inp_file_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["upload_id"], name: "index_zones_on_upload_id"
+    t.index ["inp_file_id"], name: "index_zones_on_inp_file_id"
   end
 
-  add_foreign_key "compliances", "uploads"
-  add_foreign_key "constructions", "uploads"
-  add_foreign_key "dhw_generators", "uploads"
-  add_foreign_key "doors", "uploads"
-  add_foreign_key "generals", "uploads"
-  add_foreign_key "glasses", "uploads"
-  add_foreign_key "hvac_systems", "uploads"
-  add_foreign_key "rec_projects", "uploads"
-  add_foreign_key "rec_users", "uploads"
-  add_foreign_key "walls", "uploads"
-  add_foreign_key "windows", "uploads"
-  add_foreign_key "zones", "uploads"
+  add_foreign_key "compliances", "inp_files"
+  add_foreign_key "constructions", "inp_files"
+  add_foreign_key "dhw_generators", "inp_files"
+  add_foreign_key "doors", "inp_files"
+  add_foreign_key "generals", "inp_files"
+  add_foreign_key "glasses", "inp_files"
+  add_foreign_key "hvac_systems", "inp_files"
+  add_foreign_key "rec_projects", "inp_files"
+  add_foreign_key "rec_users", "inp_files"
+  add_foreign_key "walls", "inp_files"
+  add_foreign_key "windows", "inp_files"
+  add_foreign_key "zones", "inp_files"
 end
