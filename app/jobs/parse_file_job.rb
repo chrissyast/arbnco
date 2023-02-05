@@ -16,7 +16,7 @@ class ParseFileJob < ApplicationJob
         end
         if i == 0 # header information
           args[:name] = pair[0]
-          type = pair[1].split("-").map(&:capitalize).join
+          type = pair[1].split("-").map(&:capitalize).join # i.e. make DHW-GENERATOR into DhwGenerator
         elsif pair[0] and pair[0] != "" # all other properties
           key = pair[0].downcase.gsub("-", "_") # put it into rails-style casing
           key = "x_type" if key == "type" # 'type' is a reserved word

@@ -3,7 +3,7 @@ module InpFilesHelper
     File.new("inp_#{id}.inp", "w+")
     File.open("inp_#{id}.inp", "w+") do |f|
       file_data.class.reflect_on_all_associations.each do |a|
-        association_name = a.plural_name.upcase.singularize # name of the association, e.g. "Doors"
+        association_name = a.plural_name.upcase.singularize.gsub("_", "-") # name of the association, e.g. "Doors"
         association_object = file_data.public_send(a.name) # the object for the association itself
         if association_object.is_a? ActiveRecord::Associations::CollectionProxy # (i.e. has-many relationship)
           association_object.each do |a_o|
