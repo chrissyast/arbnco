@@ -1,5 +1,6 @@
 <%if @inp_file.completed? %>
   <%= render "inp_file" %>
+  <%= link_to "Download", :controller => 'inp_files', :action => 'download', :id => @inp_file.id  %>
 <%else%>
   <h1>We're still working on your file, please check back shortly</h1>
 <%end%>

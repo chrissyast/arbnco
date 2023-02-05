@@ -8,6 +8,12 @@ class InpFilesController < ApplicationController
     redirect_to(:action => "success")
   end
 
+  def download
+    file_data = InpFile.find(params[:id])
+    file = InpFilesHelper.convert_to_file(file_data, params[:id])
+    send_file(file)
+  end
+
   def new
   end
 
