@@ -7,7 +7,7 @@
       <% object.attributes.except("id", "upload_id", "created_at", "updated_at", "name").each do |k, v| %>
         <% if v and v.strip != "" %>
           <li>
-            <b><%= k %></b>: <%= v %>
+            <b><%= k == "x_type" ? "type" : k %></b>: <%= v %>
           </li>
         <% end %>
       <% end %>
